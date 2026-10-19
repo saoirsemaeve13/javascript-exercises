@@ -22,5 +22,25 @@ let playerScore = 0,
 
 
 function playRound(playerChoice, computerChoice) {
+    const playerSelection= playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
+    const computerSelection = computerChoice;
+    
+    if (playerSelection === computerSelection) {
+        console.log("It's a tie!");}
+    else if (
+        (playerSelection === "Rock" && computerSelection === "Scissors") ||
+        (playerSelection === "Paper" && computerSelection === "Rock") ||
+        (playerSelection === "Scissors" && computerSelection === "Paper")) {
+            console.log("Player wins");
+            ++playerScore;
+        }
+    else {
+        console.log("Computer wins!")
+        ++computerScore;
+    }
+    }
+// playRound(playerChoice,finalChoice);
 
-}
+    function playGame(){
+        
+    }
