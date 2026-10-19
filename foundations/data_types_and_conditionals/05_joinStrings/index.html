@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="output-text"></p>
+    <script>
+   
+    const targetParagraph = document.getElementById("output-text");
+        let num1 = (prompt("pick a number, any number"));
+        if (num1 % 3 === 0 && num1 % 5 === 0){
+            targetParagraph.textContent = "FizzBuzz";
+                }
+        else if (num1 % 5 === 0) {
+            targetParagraph.textContent = "Buzz";
+        }
+        else if (num1 % 3 === 0){
+            targetParagraph.textContent = "Fizz"; 
+        }
+        else {
+        for (let i = 1; i <= num1; i++) {
+            targetParagraph.textContent += i + " ";
+        }
+        };
+        
+
+    </script>
+    <p id="output-text"></p>
+</body>
+</html>
