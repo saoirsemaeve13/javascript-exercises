@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <h3>Shoot!</h3>
+    <button class="userWeapon" data-choice="Rock">Rock</button>
+    <button class="userWeapon" data-choice="Scissors">Scissors</button>
+    <button class="userWeapon" data-choice="Paper">Paper</button>
+    <p>Choose your weapon.</p>
+    <button class="reset">Play again!</button>
+
+    <script>
+        const weapons = ["Rock", "Paper", "Scissors"];
+        const randomIndex = Math.floor(Math.random() * weapons.length);
+        const buttons = document.querySelectorAll('.userWeapon');
+
+        function shoot (){
+            const computerWeapon = weapons[randomIndex];
+//            console.log(computerWeapon)
+//            alert("yoooooo");
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', shoot);
+        });
+      
+
+    </script>
+</body>
+</html>
