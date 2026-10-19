@@ -12,17 +12,32 @@
     <button class="userWeapon" data-choice="Scissors">Scissors</button>
     <button class="userWeapon" data-choice="Paper">Paper</button>
     <p>Choose your weapon.</p>
-    <button class="reset">Play again!</button>
 
     <script>
         const weapons = ["Rock", "Paper", "Scissors"];
-        const randomIndex = Math.floor(Math.random() * weapons.length);
         const buttons = document.querySelectorAll('.userWeapon');
 
-        function shoot (){
+        function shoot (e){
+            const clickedButton = e.target;
+            const randomIndex = Math.floor(Math.random() * weapons.length);
             const computerWeapon = weapons[randomIndex];
-//            console.log(computerWeapon)
+                console.log(computerWeapon)
+            const playerWeapon = clickedButton.dataset.choice;
+                console.log(playerWeapon);
 //            alert("yoooooo");
+            if (playerWeapon === computerWeapon){
+                alert ("It's a tie!")
+            }
+            else if (
+                (playerWeapon === "Rock" && computerWeapon === "Scissors") ||
+                (playerWeapon === "Paper" && computerWeapon === "Rock") ||
+                (playerWeapon === "Scissors" && computerWeapon === "Paper")){
+                    alert ("Player wins!");
+                }
+            else {
+                alert ("Computer wins!");
+            }
+
         }
 
         buttons.forEach(button => {
