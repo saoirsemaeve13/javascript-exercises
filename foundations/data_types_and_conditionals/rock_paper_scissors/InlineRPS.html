@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <h3>Shoot!</h3>
+    <button class="userWeapon" data-choice="Rock">Rock</button>
+    <button class="userWeapon" data-choice="Scissors">Scissors</button>
+    <button class="userWeapon" data-choice="Paper">Paper</button>
+    <p>Choose your weapon.</p>
+
+    <script>
+        const weapons = ["Rock", "Paper", "Scissors"];
+        const buttons = document.querySelectorAll('.userWeapon');
+
+        function shoot (e){
+            const clickedButton = e.target;
+            const randomIndex = Math.floor(Math.random() * weapons.length);
+            const computerWeapon = weapons[randomIndex];
+                console.log(computerWeapon)
+            const playerWeapon = clickedButton.dataset.choice;
+                console.log(playerWeapon);
+//            alert("yoooooo");
+            if (playerWeapon === computerWeapon){
+                alert ("It's a tie!")
+            }
+            else if (
+                (playerWeapon === "Rock" && computerWeapon === "Scissors") ||
+                (playerWeapon === "Paper" && computerWeapon === "Rock") ||
+                (playerWeapon === "Scissors" && computerWeapon === "Paper")){
+                    alert ("Player wins!");
+                }
+            else {
+                alert ("Computer wins!");
+            }
+
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', shoot);
+        });
+      
+
+    </script>
+</body>
+</html>
