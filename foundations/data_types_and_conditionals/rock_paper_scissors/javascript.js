@@ -1,68 +1,59 @@
-//      console.log("hello world");
-
 function getComputerChoice() {
-    const computerChoice = Math.floor(Math.random() * 3) + 1;
-        if (computerChoice === 1) return "Rock";
-    else if (computerChoice === 2) return "Paper";
-    else return "Scissors";
-        }
-
-function getHumanChoice() {
-    const humanChoice = prompt("Rock, paper, or scissors?");
-    return humanChoice;
+  const computerChoice = Math.floor(Math.random() * 3) + 1;
+  if (computerChoice === 1) return "Rock";
+  else if (computerChoice === 2) return "Paper";
+  else return "Scissors";
 }
-/*
-const finalChoice = getComputerChoice();
-console.log("Computer choice is " + finalChoice);
-const playerChoice = getHumanChoice();
-console.log("Player choice is " + playerChoice); */
-
 let playerScore = 0,
-    computerScore = 0;
+  computerScore = 0;
 
+const weaponBtn = document.querySelectorAll(".weapon");
 
-function playRound() {
+weaponBtn.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    if (playerScore >= 5 || computerScore >= 5) {
+      console.log("Game over. Player wins.");
+      return;
+    }
 
-    const finalChoice = getComputerChoice();
-    console.log("Computer choice is " + finalChoice);
-    const playerChoice = getHumanChoice();
-    console.log("Player choice is " + playerChoice);
-    const playerSelection= playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
-    const computerSelection = finalChoice;
-    
+    const winningMoves = {
+      Rock: "Scissors",
+      Paper: "Rock",
+      Scissors: "Paper",
+    };
+
+    const playerSelection = button.dataset.choice;
+    const computerSelection = getComputerChoice();
+
     if (playerSelection === computerSelection) {
-        console.log("It's a tie!");}
-    else if (
-        (playerSelection === "Rock" && computerSelection === "Scissors") ||
-        (playerSelection === "Paper" && computerSelection === "Rock") ||
-        (playerSelection === "Scissors" && computerSelection === "Paper")) {
-            console.log("Player wins");
-            ++playerScore;
-        }
-    else {
-        console.log("Computer wins!")
-        ++computerScore;
+      console.log(`It's a tie! Both chose ${playerSelection}`);
+    } else if (winningMoves[playerSelection] === computerSelection) {
+      ++playerScore;
+      console.log(
+        `Player wins this round! ${playerSelection} beats ${computerSelection}.`,
+      );
+    } else {
+      ++computerScore;
+      console.log(
+        `Computer wins this round! ${computerSelection} beats ${playerSelection}.`,
+      );
     }
-    console.log(`Player score is ${playerScore}.`)
-    console.log(`Computer score is ${computerScore}`)
+    console.log(`Player score is ${playerScore}.`);
+    console.log(`Computer score is ${computerScore}`);
+  });
+});
+
+function playGame() {
+  while (playerScore < 5 && computerScore < 5) {
+    if (playerScore > computerScore) {
+      alert("Player wins!");
+    } else {
+      alert("Computer wins!");
     }
+  }
+}
 
-    
-    function playGame(){
-        playRound();
-        playRound();
-        playRound();
-        playRound();
-        playRound();
-        if (playerScore > computerScore) {
-            console.log("Player wins!");}
-        else if (playerScore === computerScore){
-            console.log("It's a tie!")
-        }
-        else{
-            console.log("Computer wins!");
-        }
-     }
-    
+const rpsShoot = document.querySelector("#rpsShoot");
+//rpsShoot.addEventListener("click", playGame());
 
-playGame();
+//playGame();
