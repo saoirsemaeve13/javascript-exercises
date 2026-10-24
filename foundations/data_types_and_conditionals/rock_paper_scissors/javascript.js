@@ -12,7 +12,11 @@ const weaponBtn = document.querySelectorAll(".weapon");
 weaponBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (playerScore >= 5 || computerScore >= 5) {
-      console.log("Game over. Player wins.");
+      if (playerScore > computerScore) {
+        console.log("Player wins. Game Over.");
+      } else {
+        console.log("Game over. Computer wins.");
+      }
       return;
     }
 
@@ -40,20 +44,22 @@ weaponBtn.forEach((button) => {
     }
     console.log(`Player score is ${playerScore}.`);
     console.log(`Computer score is ${computerScore}`);
+
+    if (playerScore >= 5 || computerScore >= 5) {
+      if (playerScore > computerScore) {
+        console.log("Player wins Press shoot to restart the game!");
+      } else {
+        console.log("Computer wins! Press shoot to restart the game!");
+      }
+    }
   });
 });
 
-function playGame() {
-  while (playerScore < 5 && computerScore < 5) {
-    if (playerScore > computerScore) {
-      alert("Player wins!");
-    } else {
-      alert("Computer wins!");
-    }
-  }
-}
-
 const rpsShoot = document.querySelector("#rpsShoot");
-//rpsShoot.addEventListener("click", playGame());
+rpsShoot.addEventListener("click", () => {
+  playerScore = 0;
+  computerScore = 0;
+  console.log("Scores have been reset.");
+});
 
 //playGame();
