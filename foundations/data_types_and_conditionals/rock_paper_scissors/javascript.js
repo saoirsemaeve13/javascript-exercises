@@ -8,14 +8,18 @@ let playerScore = 0,
   computerScore = 0;
 
 const weaponBtn = document.querySelectorAll(".weapon");
+const resultsBody = document.querySelector(".results");
+const para = document.createElement("p");
 
 weaponBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (playerScore >= 5 || computerScore >= 5) {
       if (playerScore > computerScore) {
-        console.log("Player wins. Game Over.");
+        para.textContent = "Player wins. Game Over. Press shoot to restart.";
+        resultsBody.appendChild(para);
       } else {
-        console.log("Game over. Computer wins.");
+        para.textContent = "Game over. Computer wins. Press shoot to restart.";
+        resultsBody.appendChild(para);
       }
       return;
     }
@@ -30,26 +34,25 @@ weaponBtn.forEach((button) => {
     const computerSelection = getComputerChoice();
 
     if (playerSelection === computerSelection) {
-      console.log(`It's a tie! Both chose ${playerSelection}`);
+      para.textContent = `It's a tie! Both chose ${playerSelection}. Player score is ${playerScore}. Computer score is ${computerScore}.`;
+      resultsBody.appendChild(para);
     } else if (winningMoves[playerSelection] === computerSelection) {
       ++playerScore;
-      console.log(
-        `Player wins this round! ${playerSelection} beats ${computerSelection}.`,
-      );
+      para.textContent = `Player wins this round! ${playerSelection} beats ${computerSelection}. Player score is ${playerScore}. Computer score is ${computerScore}.`;
+      resultsBody.appendChild(para);
     } else {
       ++computerScore;
-      console.log(
-        `Computer wins this round! ${computerSelection} beats ${playerSelection}.`,
-      );
+      para.textContent = `Computer wins this round! ${computerSelection} beats ${playerSelection}. Player score is ${playerScore}. Computer score is ${computerScore}.`;
+      resultsBody.appendChild(para);
     }
-    console.log(`Player score is ${playerScore}.`);
-    console.log(`Computer score is ${computerScore}`);
 
     if (playerScore >= 5 || computerScore >= 5) {
       if (playerScore > computerScore) {
-        console.log("Player wins Press shoot to restart the game!");
+        para.textContent = "Player wins! Press shoot to restart the game!";
+        resultsBody.appendChild(para);
       } else {
-        console.log("Computer wins! Press shoot to restart the game!");
+        para.textContent = "Computer wins! Press shoot to restart the game!";
+        resultsBody.appendChild(para);
       }
     }
   });
@@ -59,7 +62,8 @@ const rpsShoot = document.querySelector("#rpsShoot");
 rpsShoot.addEventListener("click", () => {
   playerScore = 0;
   computerScore = 0;
-  console.log("Scores have been reset.");
+  para.textContent = "Scores have been reset.";
+  resultsBody.appendChild(para);
 });
 
 //playGame();
