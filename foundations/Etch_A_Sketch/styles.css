@@ -1,4 +1,36 @@
 #container {
   display: flex;
   flex-wrap: wrap;
+  width: 960px;
+}
+
+.div {
+  flex: 0 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.black {
+  background-color: black;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.pink {
+  background-color: pink;
+}
+.purple {
+  background-color: purple;
+}
+.yellow {
+  background-color: yellow;
 }
